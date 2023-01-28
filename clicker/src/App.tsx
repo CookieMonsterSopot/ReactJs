@@ -47,13 +47,17 @@ function App() {
     <div className="App">
       <Heading />
       <CountDisplay count={count} />
+      <button onClick={incraseCount}>Add+1</button>
       <Manipulator count={count} setCount={setCount} />
-      <DisplayRandom setRandomNumber={setRandomNumber} />
-      <div>
+      <DisplayRandom
+        setRandomNumber={setRandomNumber}
+        randomNumber={randomNumber}
+      />
+
+      {/* <p>{randomNumber}</p> */}
+      {/* <div>
         <h5>{count}</h5>
-      </div>
-      <button onClick={incraseCount}>Add1</button>
-      <p>{randomNumber}</p>
+      </div> */}
       {/* <Form />
       <Table response={response} />
       <Display response={response} />

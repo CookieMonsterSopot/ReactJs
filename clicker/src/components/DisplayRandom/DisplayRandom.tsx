@@ -2,9 +2,13 @@ import React from "react";
 
 interface DisplayRandomProps {
   setRandomNumber: (value: number) => void;
+  randomNumber: number;
 }
 
-const DisplayRandom = ({ setRandomNumber }: DisplayRandomProps) => {
+const DisplayRandom = ({
+  setRandomNumber,
+  randomNumber,
+}: DisplayRandomProps) => {
   const updateRandomNumber = () => {
     const random = Math.floor(Math.random() * 100);
     setRandomNumber(random);
@@ -12,6 +16,8 @@ const DisplayRandom = ({ setRandomNumber }: DisplayRandomProps) => {
 
   return (
     <div>
+      <h2>Display Random Number</h2>
+      <p>{randomNumber}</p>
       <button onClick={updateRandomNumber}>Update</button>
     </div>
   );
