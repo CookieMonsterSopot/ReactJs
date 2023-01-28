@@ -1,43 +1,87 @@
-import React from "react";
+import { useState } from "react";
 import CountDisplay from "./components/CountDisplay/CountDisplay";
 import Heading from "./components/Heading/Heading";
 import Manipulator from "./components/Manipulator/Manipulator";
-import Form from "./components/Form/Form";
-import Table from "./components/Table/Table";
-import Display from "./components/Display/Display";
-import TodoDisplay from "./components/TodoDisplay/TodoDisplay";
+import DisplayRandom from "./components/DisplayRandom/DisplayRandom";
+// import Form from "./components/Form/Form";
+// import Table from "./components/Table/Table";
+// import Display from "./components/Display/Display";
+// import TodoDisplay from "./components/TodoDisplay/TodoDisplay";
 
 function App() {
-  const response = {
-    firstName: "John",
-    lastName: "Doe",
-    age: 30,
-  };
-  const todo = {
-    userId: 1,
-    id: 1,
-    title: "delectus aut autem",
-    completed: false,
-  };
+  // Hook - funkcja wbudowana (najczęściej) w react lub pochodząca od osób trzecich, ma ona dostęp do wewnętrznych mechanizmów działania reacta
 
+  // ZASADY HOOKÓW
+  // 1. Hooki mogą być używane tylko w komponentach funkcyjnych.
+  // 2. Hooki mogą być wywoływane tylko na top scopie w komponentach funkcyjnych.
+  // 3. Nazwy hooków zaczynają się na "use" (np. useState, useRef, useEffect, useForm itd.)
+
+  // useState - hook służący do przechowywania wartości, których zmiana ma spowodować przeładowanie się komponentu
+  // stan pusty => request => response => response do stanu => przeładowanie komponentu => wyświetlenie response
+  // useState zwraca listę z 2 elementami: zmienną stanową (stan) i funkcję aktualizującą zmienną stanową (stan)
+  // zmienną stanową możesz nazwać jak chcesz, w nazewnictwie funkcji aktualizującej zmienną stanową istnieje konwencja: set + nazwa zmiennej stanowej
+
+  const [count, setCount] = useState(0);
+  // count = 5 ZLE
+  // count++ ZLE
+  // setCount(5) DOBRZE
+
+  // let count = 10;
+  console.log("przeladowane");
+  const incraseCount = () => {
+    setCount(count + 1);
+    // count++ // to jest operacja, nie wartość, funkcja aktulizująca potrzebuje wartości
+    console.log(count);
+  };
   return (
     <div className="App">
       <Heading />
       <CountDisplay />
       <Manipulator />
-      <Form />
-      <Table response={response}/>
+      <DisplayRandom />
+      <div>
+        <h5>{count}</h5>
+      </div>
+      <button onClick={incraseCount}>Add1</button>
+      {/* <Form />
+      <Table response={response} />
       <Display response={response} />
-      <TodoDisplay todo={todo} />
+      <TodoDisplay todo={todo} /> */}
     </div>
   );
 }
 
 export default App;
 
-// 1. Stwórz komponent Heading, w komponencie wyświetlaj h1 z tekstem ZDFRONpol17 Clicker/React. Wyświetl Heading w App.tsx
-// 2. Stwórz komponent CountDisplay, w komponencie wyświetlaj diva, w divie spana z tesktem "0". Wyświetl CountDisplay w App.tsx
-// 3. Stwórz komponent Manipulator, w komponencie wyświetlaj diva, w divie h2 z textem: "Zwiększ lub zmniejsz", obok 2 buttony, jeden z tekstem "+", jeden z tekstem "-". Wyświetl Manipulator w App.tsx
+// const props = {
+//   dataToPassDown: response,
+// };
 
-// 1. Stwórz komponent Form. W komponencie wyświetlaj tag form, nadaj mu id contact-form. W środku input tekstowy z placeholderem "first name", input tekstowy z placeholderem "last name", input tekstowy z placeholderem "zip code and city", input tekstowy z placeholderem "address", dodaj do tego button type submit z tekstem Send.
-// 2. Stwórz komponent Table. W nim wyświetlaj tabele. Ma mieć 3 wiersze, jeden nagłówkowy, jeden normalny, jeden stopkowy. Ma mieć też 2 kolumny. Wpisz w tabele dowolne dane.
+// PRZEKAZYWANIE DANYCH Z KOMPONENTU RODZICA DO KOMPONENTU DZIECKA - PROPS
+// 1. Wpisanie propsa w tag komponentu (wyświetlnie).
+// 2. Stworzenie odpowiedniego interfejsu w komponencie który odbiera dane. Pamiętaj że nawet jeżeli przekazujesz tylko 1 prop, jest on obwijany obiektem.
+// 3. Odebranie propsów przez parametr w komponencie dziecku. Od razu destrukturyzuj parametr.
+// 4. Korzystaj z danych.
+
+// 1. Przekaż obiekt response do komponentu Table.tsx propsem. Nie zapomnij o odebraniu propsów, destrukturyzacji i intefejsie
+// 2. Wyświetl dane w tabeli (po lewej w tabeli imie nazwisko wiek, po prawej dane)
+
+// const response = {
+//   firstName: "John",
+//   lastName: "Smith",
+//   age: 30,
+// };
+
+// const todo = {
+//   userId: 1,
+//   id: 1,
+//   title: "delectus aut autem",
+//   completed: false,
+// };
+
+// 1. Stwórz komponent DisplayRandom.
+// 2. W komponencie DisplayRandom stwórz stan randomNumber, wartość początkowa: 0
+// 3. Stwórz funkcję updateRandomNumber, w tej funkcji przy użyciu innej odpowiedniej funkcji aktulizuj stan randomNumber na losową liczbę.
+// 4. Stan randomNumber wyświetlaj w paragrafie w komponencie DisplayRandom.
+// 5. Stwórz przycisk z textem Update, na ten przycisk nadaj onClick, do onClicka podaj funkcję updateRandomNumber.
+// 6. Sam komponent DisplayRandom wyświetl w App.tsx
