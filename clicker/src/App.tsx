@@ -26,7 +26,7 @@ function App() {
       <CountDisplay />
       <Manipulator />
       <Form />
-      <Table />
+      <Table response={response}/>
       <Display response={response} />
       <TodoDisplay todo={todo} />
     </div>

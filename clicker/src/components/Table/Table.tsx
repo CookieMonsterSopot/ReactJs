@@ -1,24 +1,34 @@
 import React from "react";
 
-const Table = () => {
+interface Person {
+  firstName: string;
+  lastName: string;
+  age: number;
+}
+
+interface TableProps {
+  response: Person;
+}
+
+export const Table = ({ response }: TableProps) => {
   return (
     <table>
       <thead>
         <tr>
-          <th>a</th>
-          <th>b</th>
+          <th>Imię</th>
+          <th>{response.firstName}</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>c</td>
-          <td>d</td>
+          <td>Nazwisko</td>
+          <td>{response.lastName}</td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <td>e</td>
-          <td>f</td>
+          <td>Wiek</td>
+          <td>{response.age}</td>
         </tr>
       </tfoot>
     </table>
