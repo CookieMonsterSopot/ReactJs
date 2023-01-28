@@ -1,9 +1,12 @@
 import React from "react";
+interface CountDisplayProps {
+  count: number;
+}
 
-const CountDisplay = () => {
+const CountDisplay = ({ count }: CountDisplayProps) => {
   return (
     <div>
-      <span>0</span>
+      <span>{count}</span>
     </div>
   );
 };

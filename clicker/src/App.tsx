@@ -22,6 +22,8 @@ function App() {
   // zmienną stanową możesz nazwać jak chcesz, w nazewnictwie funkcji aktualizującej zmienną stanową istnieje konwencja: set + nazwa zmiennej stanowej
 
   const [count, setCount] = useState(0);
+  const [randomNumber, setRandomNumber] = useState(0);
+
   // count = 5 ZLE
   // count++ ZLE
   // setCount(5) DOBRZE
@@ -33,16 +35,25 @@ function App() {
     // count++ // to jest operacja, nie wartość, funkcja aktulizująca potrzebuje wartości
     console.log(count);
   };
+
+  // 1. Zdefiniowanie stanu
+  // 2. Przekazanie funkcji aktulizującej stan do komponentu niżej
+  // 3. Wywołanie tam tej funkcji
+  // 4. Zmienna stanowa w komponencie wyższym się aktulizuje
+  // 5. Przeładowanie komponentu
+  // 6. Wyświetlenie nowej wartości
+
   return (
     <div className="App">
       <Heading />
-      <CountDisplay />
-      <Manipulator />
-      <DisplayRandom />
+      <CountDisplay count={count} />
+      <Manipulator count={count} setCount={setCount} />
+      <DisplayRandom setRandomNumber={setRandomNumber} />
       <div>
         <h5>{count}</h5>
       </div>
       <button onClick={incraseCount}>Add1</button>
+      <p>{randomNumber}</p>
       {/* <Form />
       <Table response={response} />
       <Display response={response} />

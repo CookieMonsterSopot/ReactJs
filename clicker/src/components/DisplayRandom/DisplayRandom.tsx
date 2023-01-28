@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
+import React from "react";
 
-const DisplayRandom = () => {
-  const [randomNumber, setRandomNumber] = useState(0);
+interface DisplayRandomProps {
+  setRandomNumber: (value: number) => void;
+}
 
-  function updateRandomNumber() {
-    setRandomNumber(Math.floor(Math.random() * 100));
-  }
+const DisplayRandom = ({ setRandomNumber }: DisplayRandomProps) => {
+  const updateRandomNumber = () => {
+    const random = Math.floor(Math.random() * 100);
+    setRandomNumber(random);
+  };
 
   return (
     <div>
-      <p>{randomNumber}</p>
       <button onClick={updateRandomNumber}>Update</button>
     </div>
   );
-}
+};
 
 export default DisplayRandom;
-
 
 // 1. Stwórz komponent DisplayRandom.
 // 2. W komponencie DisplayRandom stwórz stan randomNumber, wartość początkowa: 0
