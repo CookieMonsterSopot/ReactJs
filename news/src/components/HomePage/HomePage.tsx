@@ -57,8 +57,6 @@ const HomePage = () => {
     //     .then((data) => console.log(data));
   }, []);
 
-  const [clicked, setClicked] = useState(false);
-
   return (
     <>
       <Typography
@@ -68,11 +66,19 @@ const HomePage = () => {
       >
         Today's hottest news
       </Typography>
-      {articles.length !== 0 && <Article article={articles[0]} />}
-      <button onClick={() => setClicked(!clicked)}>Click me!</button>
-      {clicked && <h1>TO JEST RENDEROWANIE WARUNKOWE</h1>}
+      {/* {articles.length !== 0 && <Article article={articles[0]} />} */}
+      {articles.length !== 0 &&
+        articles.map((el, i) => {
+          return <Article article={el} key={i} />;
+        })}
     </>
   );
 };
 
 export default HomePage;
+
+// const [clicked, setClicked] = useState(false);
+{
+  /* <button onClick={() => setClicked(!clicked)}>Click me!</button>
+{clicked && <h1>TO JEST RENDEROWANIE WARUNKOWE</h1>} */
+}
