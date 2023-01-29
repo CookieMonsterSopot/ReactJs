@@ -57,6 +57,8 @@ const HomePage = () => {
     //     .then((data) => console.log(data));
   }, []);
 
+  const [clicked, setClicked] = useState(false);
+
   return (
     <>
       <Typography
@@ -66,8 +68,9 @@ const HomePage = () => {
       >
         Today's hottest news
       </Typography>
-      
       {articles.length !== 0 && <Article article={articles[0]} />}
+      <button onClick={() => setClicked(!clicked)}>Click me!</button>
+      {clicked && <h1>TO JEST RENDEROWANIE WARUNKOWE</h1>}
     </>
   );
 };
