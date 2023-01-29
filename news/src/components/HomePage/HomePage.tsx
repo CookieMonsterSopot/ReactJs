@@ -77,8 +77,13 @@ const HomePage = () => {
 
 export default HomePage;
 
+// --- RENDEROWANIE WARUNKOWE
 // const [clicked, setClicked] = useState(false);
-{
-  /* <button onClick={() => setClicked(!clicked)}>Click me!</button>
-{clicked && <h1>TO JEST RENDEROWANIE WARUNKOWE</h1>} */
-}
+// <button onClick={() => setClicked(!clicked)}>Click me!</button>
+// {clicked && <h1>TO JEST RENDEROWANIE WARUNKOWE</h1>}
+
+// --- RENDEROWANIE WARUNKOWE W PĘTLI
+// {x.length !== 0 &&
+//   x.map((el, i) => {
+//     return <Article x={el} key={i} />;
+//   })}
