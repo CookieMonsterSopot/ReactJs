@@ -30,25 +30,24 @@ const HomePage = () => {
     const monthWithZero = month.toString().padStart(2, "0");
     const dayWithZero = day.toString().padStart(2, "0");
 
-    axios.get(
-      `https://newsapi.org/v2/everything?q=world&language=en&sortBy=popularity&from=${year}-${monthWithZero}-${dayWithZero}&apiKey=${API_KEY}`
-    );
-
-    // W parametrze from ustaw date, tak żeby miesiąc i dzień miały przed dopisane 0 jeżeli są mniejsze od 10.
-    // Może nie działać przez strefy czasowe
-    // axios
-    //   .get(
-    //     `newsapi.org/v2/everything?q=world&language=en&sortBy=popularity&from=${year}-${
-    //       month < 10 ? `0${month}` : month
-    //     }-${day < 10 ? `0${day}` : day}&apiKey=${API_KEY}`
-    //   )
     axios
       .get(
         `https://newsapi.org/v2/everything?q=world&language=en&sortBy=popularity&from=${year}-${monthWithZero}-${dayWithZero}&apiKey=${API_KEY}`
       )
       .then((data) => {
         setArticles(data.data.articles);
-        console.log(data.data.articles);
+
+        // W parametrze from ustaw date, tak żeby miesiąc i dzień miały przed dopisane 0 jeżeli są mniejsze od 10.
+        // Może nie działać przez strefy czasowe
+        // axios
+        //   .get(
+        //     `newsapi.org/v2/everything?q=world&language=en&sortBy=popularity&from=${year}-${
+        //       month < 10 ? `0${month}` : month
+        //     }-${day < 10 ? `0${day}` : day}&apiKey=${API_KEY}`
+        //   )
+        //   .then((data) => {
+        //     setArticles(data.data.articles);
+        // console.log(data.data.articles);
       });
     //   axios
     //     .get(
